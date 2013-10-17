@@ -2,7 +2,7 @@ package edu.ucsc.gameAI;
 
 import edu.ucsc.gameAI.decisionTrees.binary.IBinaryNode;
 
-public class GoRightAction implements IAction, IBinaryNode {
+public class GoDownAction implements IAction, IBinaryNode {
 
 	public void doAction() {
 		// TODO Auto-generated method stub
@@ -13,6 +13,6 @@ public class GoRightAction implements IAction, IBinaryNode {
 	
 	public MOVE getMove()
 	{
-		return MOVE.RIGHT;
+		return MOVE.DOWN;
 	}
 }

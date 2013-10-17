@@ -10,6 +10,9 @@ import edu.ucsc.gameAI.ICondition;
  * 
  * @author Josh McCoy
  */
+ 
+//this is apparently complete, so I guess free points for us?
+
 public class BinaryDecision implements IBinaryDecision, IBinaryNode {
 
 	private IBinaryNode trueBranch;
