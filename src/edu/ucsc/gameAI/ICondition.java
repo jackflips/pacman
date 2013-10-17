@@ -9,6 +9,8 @@ import pacman.game.Game;
  * @author Josh McCoy
  */
 
+ //i'm in ur code, adding ur comments
+ 
 public interface ICondition {
 	/**
 	 * Evaluates the decision node's condition and returns the true or false result.
