@@ -72,7 +72,7 @@ public class Executor
 
 		//exec.runGameTimed(new StarterPacMan(),new EvaluationAgent(),visual);
 		//exec.runGameTimed(new StarterPacMan(),new MyGhosts(),visual,bRunUnitTests);
-		exec.runGameTimed(new HumanController(new KeyBoardInput()),new FsmGhosts(),visual,bRunUnitTests);
+		exec.runGameTimed(new HumanController(new KeyBoardInput()),new MyGhosts(),visual,bRunUnitTests);
 
 //		exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);	
 		//*/
@@ -170,6 +170,7 @@ public class Executor
     public void runGameTimed(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,boolean visual,boolean bRunUnitTests)
 	{
 		Game game=new Game(0);
+		Evaluator eval = new Evaluator();
 		
 		GameView gv=null;
 		
@@ -202,7 +203,7 @@ public class Executor
 	        	gv.repaint();
 	        
 	        if (bRunUnitTests)
-	        	Evaluator.runUnitTests(game,pacManController,ghostController);
+	        	eval.runUnitTests(game,pacManController,ghostController);
 
 		}
 		
