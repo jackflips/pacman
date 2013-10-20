@@ -35,13 +35,13 @@ import edu.ucsc.gameAI.*;
 import edu.ucsc.gameAI.conditions.*;
 import edu.ucsc.gameAI.decisionTrees.binary.BinaryDecision;
 import edu.ucsc.gameAI.fsm.*;
-import edu.ucsc.gameAI.hfsm.HFSM;
+/*import edu.ucsc.gameAI.hfsm.HFSM;
 import edu.ucsc.gameAI.hfsm.HState;
 import edu.ucsc.gameAI.hfsm.HTransition;
 import edu.ucsc.gameAI.hfsm.IHFSM;
 import edu.ucsc.gameAI.hfsm.IHState;
 import edu.ucsc.gameAI.hfsm.IHTransition;
-
+//*/
 /**
  * This class may be used to execute the game in timed or un-timed modes, with or without
  * visuals. Competitors should implement their controllers in game.entries.ghosts and 

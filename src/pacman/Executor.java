@@ -29,7 +29,7 @@ import pacman.game.GameView;
 import static pacman.game.Constants.*;
 import edu.ucsc.gameAI.*;
 import edu.ucsc.gameAI.conditions.*;
-import pacman.Evaluator;
+//import pacman.Evaluator;
 
 /**
  * This class may be used to execute the game in timed or un-timed modes, with or without
@@ -170,7 +170,7 @@ public class Executor
     public void runGameTimed(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,boolean visual,boolean bRunUnitTests)
 	{
 		Game game=new Game(0);
-		Evaluator eval = new Evaluator();
+		//Evaluator eval = new Evaluator();
 		
 		GameView gv=null;
 		
@@ -202,8 +202,8 @@ public class Executor
 	        if(visual)
 	        	gv.repaint();
 	        
-	        if (bRunUnitTests)
-	        	eval.runUnitTests(game,pacManController,ghostController);
+	        //if (bRunUnitTests)
+	        	//eval.runUnitTests(game,pacManController,ghostController);
 
 		}
 		

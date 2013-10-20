@@ -9,6 +9,9 @@ import pacman.game.Game;
 import edu.ucsc.gameAI.conditions.IsEdible;
 import edu.ucsc.gameAI.decisionTrees.binary.*;
 import edu.ucsc.gameAI.*;
+import edu.ucsc.gameAI.GoLeftAction;
+import edu.ucsc.gameAI.GoRightAction;
+import edu.ucsc.gameAI.fsm.*;
 
 /*
  * This is the class you need to modify for your entry. In particular, you need to
@@ -26,13 +29,13 @@ public class MyGhosts extends Controller<EnumMap<GHOST,MOVE>>
 		for(GHOST ghost : GHOST.values())	//for each ghost
 		{
 			BinaryDecision edibleBinaryDecision = new BinaryDecision();
-			edibleBinaryDecision.setCondition(new IsEdible(game,ghost));
+			edibleBinaryDecision.setCondition(new IsEdible(ghost));
 			edibleBinaryDecision.setTrueBranch(new GoLeftAction());
 			edibleBinaryDecision.setFalseBranch(new GoRightAction());
 	
 			if(game.doesGhostRequireAction(ghost))		//if ghost requires an action
 			{
-				if (edibleBinaryDecision.makeDecision().getClass() == GoLeftAction.class)
+				if (edibleBinaryDecision.makeDecision(game).getClass() == GoLeftAction.class)
 					myMoves.put(ghost,MOVE.LEFT);
 				else
 					myMoves.put(ghost,MOVE.RIGHT);

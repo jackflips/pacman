@@ -1,6 +1,8 @@
 package edu.ucsc.gameAI;
 
 import edu.ucsc.gameAI.decisionTrees.binary.IBinaryNode;
+import pacman.game.Constants.MOVE;
+
 
 public class GoUpAction implements IAction, IBinaryNode {
 
