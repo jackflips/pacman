@@ -9,7 +9,7 @@ import edu.ucsc.gameAI.ICondition;
  * 
  * @author Josh McCoy
  */
-public interface ITransition {
+public class Transition implements ITransition {
 	
 
 	IState targetState;
