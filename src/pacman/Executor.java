@@ -30,6 +30,7 @@ import pacman.game.GameView;
 import static pacman.game.Constants.*;
 import edu.ucsc.gameAI.*;
 import edu.ucsc.gameAI.conditions.*;
+import edu.ucsc.gameAI.conditions.GhostsClose;
 import pacman.Evaluator;
 
 /**
