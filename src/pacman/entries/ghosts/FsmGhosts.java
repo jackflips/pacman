@@ -14,6 +14,10 @@ import edu.ucsc.gameAI.fsm.State;
 import edu.ucsc.gameAI.fsm.StateMachine;
 import edu.ucsc.gameAI.fsm.Transition;
 import edu.ucsc.gameAI.*;
+import edu.ucsc.gameAI.GoDownAction;
+import edu.ucsc.gameAI.GoRightAction;
+import edu.ucsc.gameAI.GoUpAction;
+import edu.ucsc.gameAI.GoLeftAction;
 
 /*
  * This is the class you need to modify for your entry. In particular, you need to
