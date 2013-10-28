@@ -5,7 +5,7 @@ import pacman.game.Game;
 
 public class TotalTime implements ICondition {
 	
-	int min, int max;
+	int min, max;
 	public TotalTime(int _min, int _max)
 	{
 		min = _min;

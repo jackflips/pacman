@@ -1,6 +1,7 @@
 package pacman.entries.ghosts;
 
 import java.util.EnumMap;
+import java.util.ArrayList;
 
 import pacman.controllers.Controller;
 import pacman.game.Constants.GHOST;
@@ -14,6 +15,7 @@ import edu.ucsc.gameAI.GoLeftAction;
 import edu.ucsc.gameAI.GoRightAction;
 import edu.ucsc.gameAI.AttacmanAction;
 import edu.ucsc.gameAI.fsm.*;
+import pacman.entries.Anticeptor;
 
 /*
  * This is the class you need to modify for your entry. In particular, you need to
@@ -30,6 +32,7 @@ public class MyGhosts extends Controller<EnumMap<GHOST,MOVE>> {
 		SWARM; 
 	};
 
+	Anticeptor anticeptor;
 
 	boolean initialized = false;
 	public CommonGhostState globalGhostState;
@@ -45,6 +48,7 @@ public class MyGhosts extends Controller<EnumMap<GHOST,MOVE>> {
 			interceptState.setAction(new AttacmanAction(game, GHOST.values()[i]));
 			i++;
 		}
+		anticeptor = new Anticeptor();
 	}
 
 	private EnumMap<GHOST, MOVE> myMoves=new EnumMap<GHOST, MOVE>(GHOST.class);
@@ -56,6 +60,15 @@ public class MyGhosts extends Controller<EnumMap<GHOST,MOVE>> {
 		}
 		myMoves.clear();
 		
+		//testing for anticept
+		ArrayList<Anticeptor.PathValue> values;
+		values = anticeptor.anticept(game, game.getPacmanCurrentNodeIndex(), MOVE.NEUTRAL, 10);
+		System.out.println("\nFRAME");
+		for(Anticeptor.PathValue value : values)
+		{
+			System.out.println("Node: " + value.node + "; Weight: " + value.value);
+		}
+		
 		for(GHOST ghost : GHOST.values())	//for each ghost
 		{
 			BinaryDecision edibleBinaryDecision = new BinaryDecision();
@@ -66,6 +79,8 @@ public class MyGhosts extends Controller<EnumMap<GHOST,MOVE>> {
 			if(game.doesGhostRequireAction(ghost)) { //if ghost requires an action:
 				myMoves.put(ghost,edibleBinaryDecision.makeDecision(game).getMove());
 			}
+			
+			
 		}
 		
 		

@@ -5,7 +5,7 @@ import pacman.game.Game;
 
 public class GhostEatScore implements ICondition {
 	
-	int min, int max;
+	int min, max;
 	public GhostEatScore(int _min, int _max)
 	{
 		min = _min;

@@ -5,7 +5,7 @@ import pacman.game.Game;
 
 public class Score implements ICondition {
 	
-	int min, int max;
+	int min, max;
 	public Score(int _min, int _max)
 	{
 		min = _min;

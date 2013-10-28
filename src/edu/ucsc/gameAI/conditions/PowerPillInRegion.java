@@ -16,10 +16,10 @@ public class PowerPillInRegion implements ICondition {
 	public boolean test(Game game) {
 		int[] indices = game.getActivePowerPillsIndices();
 		for (int i=0; i<indices.length; i++) {
-			yCoord = game.getNodeYCood(indices[i]);
-			if (yCoord >= y1 && yCoord <= y2) {
-				xCoord = game.getNodeXCood(indices[i]);
-				if (xCoord >= x1 && xCoord <= x2) {
+			int yCoord = game.getNodeYCood(indices[i]);
+			if (yCoord >= boundy1 && yCoord <= boundy2) {
+				int xCoord = game.getNodeXCood(indices[i]);
+				if (xCoord >= boundx1 && xCoord <= boundx2) {
 					return true;
 				}
 			}

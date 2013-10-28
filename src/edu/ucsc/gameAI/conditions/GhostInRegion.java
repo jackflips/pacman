@@ -2,7 +2,7 @@ package edu.ucsc.gameAI.conditions;
 
 import edu.ucsc.gameAI.ICondition;
 import pacman.game.Game;
-import pacman.game.Constants;
+import pacman.game.Constants.GHOST;
 
 public class GhostInRegion implements ICondition {
 	
@@ -16,14 +16,12 @@ public class GhostInRegion implements ICondition {
 	
 	public boolean test(Game game) {
 		for (GHOST ghost : GHOST.values()) {
-			int[] indices = game.getGhostCurrentNodeIndex(ghost)
-			for (int i=0; i<indices.length; i++) {
-				yCoord = game.getNodeYCood(indices[i]);
-				if (yCoord >= y1 && yCoord <= y2) {
-					xCoord = game.getNodeXCood(indices[i]);
-					if (xCoord >= x1 && xCoord <= x2) {
-						return true;
-					}
+			int index = game.getGhostCurrentNodeIndex(ghost);
+			int yCoord = game.getNodeYCood(index);
+			if (yCoord >= boundy1 && yCoord <= boundy2) {
+				int xCoord = game.getNodeXCood(index);
+				if (xCoord >= boundx1 && xCoord <= boundx2) {
+					return true;
 				}
 			}
 		}

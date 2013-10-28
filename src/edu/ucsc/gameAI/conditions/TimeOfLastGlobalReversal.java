@@ -5,7 +5,7 @@ import pacman.game.Game;
 
 public class TimeOfLastGlobalReversal implements ICondition {
 	
-	int min, int max;
+	int min, max;
 	public TimeOfLastGlobalReversal(int _min, int _max)
 	{
 		min = _min;

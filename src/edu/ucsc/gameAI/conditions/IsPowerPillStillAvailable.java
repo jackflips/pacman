@@ -5,7 +5,7 @@ import pacman.game.Game;
 
 public class IsPowerPillStillAvailable implements ICondition {
 	
-	intpillIndex;
+	int pillIndex;
 	public IsPowerPillStillAvailable(int _pillIndex)
 	{
 		pillIndex = _pillIndex;
@@ -13,6 +13,6 @@ public class IsPowerPillStillAvailable implements ICondition {
 	
 	public boolean test(Game game) 
 	{
-		return game.isPowerPillStillAvailable() == pillIndex;
+		return game.isPowerPillStillAvailable(pillIndex);
 	}
 }

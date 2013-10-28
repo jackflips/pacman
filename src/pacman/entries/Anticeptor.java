@@ -3,11 +3,13 @@ package pacman.entries;
 import pacman.game.Constants.MOVE;
 import pacman.game.Game;
 
+import java.util.ArrayList;
+
 public class Anticeptor
 {
 	//public Anticeptor(int pillValue, int powerPillValue, int ghostValue, int edibleGhostValue)
 
-	public class pathValue
+	public class PathValue
 	{
 		public int node;
 		public int value;
@@ -18,44 +20,46 @@ public class Anticeptor
 		}
 	}
 	
-	public ArrayList<pathValue> anticept(Game game, int startingNode, MOVE startingDirection, int exploreLength)
+	public ArrayList<PathValue> anticept(Game game, int startingNode, MOVE startingDirection, int exploreLength)
 	{
-		values = new ArrayList<pathValue>();
+		values = new ArrayList<PathValue>();
 		anticept_recurse(game, startingNode, startingDirection, exploreLength, 0);
 		
 		//now, bubblesort.
-		for(int i = 1; i < values.length(); i++)
+		for(int i = 1; i < values.size(); i++)
 		{
-			if(values[i].value > values[i-1].value)
+			if(values.get(i).value > values.get(i-1).value)
 			{
 				//value value value valuevaluevaluevaluevlauvluavvaluevalvuavluevaleauvaluelauvelauvalue
 				PathValue value = values.remove(i);
 				int j = i - 1;
 				while (j > 0)
 				{
-					if(values[j - 1].value > value.value)
+					if(values.get(j - 1).value > value.value)
 						break;
 					j--;
 				}
 				values.add(j, value);
 			}
 		}
+		
+		return values;
 	}
 	
 	private int pillWeight = 2;
 	private int powerPillWeight = 20;
 	//private int edibleGhostWeight = 200;
 	//private int nonedibleGhostWeight = -10000;
-	private ArrayList<pathValue> values;
+	private ArrayList<PathValue> values;
 	protected void anticept_recurse(Game game, int node, MOVE direction, int exploreLength, int weight)
 	{
-		int pillIndex = game.getPillIndex(node)
+		int pillIndex = game.getPillIndex(node);
 		if (pillIndex != -1)
 		{
 			if(game.isPillStillAvailable(pillIndex))
 				weight += pillWeight;
 		}
-		pillIndex = game.getPowerPillIndex(node)
+		pillIndex = game.getPowerPillIndex(node);
 		if (pillIndex != -1)
 		{
 			if(game.isPowerPillStillAvailable(pillIndex))
@@ -64,7 +68,7 @@ public class Anticeptor
 		
 		if (exploreLength == 0)
 		{
-			PathValue value = new PathValue(node, weight)
+			PathValue value = new PathValue(node, weight);
 			values.add(value);
 			return;
 		}

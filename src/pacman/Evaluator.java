@@ -53,7 +53,7 @@ public class Evaluator
 	ActionsAndConditionsTests actTest;
 	DecisionTreeTests decTest;
 	FSMTests fsmTest;
-	HFSMTests hfsmTest;
+//	HFSMTests hfsmTest;
 	LinkedList<Float> actResults;
 	LinkedList<Float> decResults;
 	LinkedList<Float> fsmResults;
@@ -279,10 +279,11 @@ public class Evaluator
     		if(!classesExist) {
     			;//System.err.println("Required classes are not implemented. Not running HFSM tests.");
     		}else{
-    			if (hfsmTest == null)
+    		/*	if (hfsmTest == null)
     				hfsmTest = new HFSMTests();
     			
     			hfsmResults.add(hfsmTest.test(game));
+			*/
     		}
     	}
 		

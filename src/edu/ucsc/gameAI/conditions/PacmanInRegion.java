@@ -14,14 +14,12 @@ public class PacmanInRegion implements ICondition {
 	}
 	
 	public boolean test(Game game) {
-		int[] indices = game.getPacmanCurrentNodeIndex();
-		for (int i=0; i<indices.length; i++) {
-			int yCoord = game.getNodeYCood(indices[i]);
-			if (yCoord >= y1 && yCoord <= y2) {
-				int xCoord = game.getNodeXCood(indices[i]);
-				if (xCoord >= x1 && xCoord <= x2) {
-					return true;
-				}
+		int index = game.getPacmanCurrentNodeIndex();
+		int yCoord = game.getNodeYCood(index);
+		if (yCoord >= boundy1 && yCoord <= boundy2) {
+			int xCoord = game.getNodeXCood(index);
+			if (xCoord >= boundx1 && xCoord <= boundx2) {
+				return true;
 			}
 		}
 		return false;

@@ -45,7 +45,7 @@ public class Executor
 	boolean runActionsAndConditionsTests = true;
 	boolean runDecisionTreeTests = true;
 	boolean runFSMTests = true;
-	boolean runHFSMTests = true;
+	boolean runHFSMTests = false;
 	
 	final private int TEST_DURATION = 600; 
 	
@@ -82,10 +82,10 @@ public class Executor
 		//exec.runGameTimed(new StarterPacMan(),new Legacy2TheReckoning(),visual,bRunUnitTests);
 		
 		// mypacman testing
-		exec.runGameTimed(new MyPacMan(),new Legacy2TheReckoning(),visual,bRunUnitTests);
+		//exec.runGameTimed(new MyPacMan(),new Legacy2TheReckoning(),visual,bRunUnitTests);
 
 		// myghost testing
-		//exec.runGameTimed(new StarterPacMan(),new MyGhosts(),visual,bRunUnitTests);
+		exec.runGameTimed(new StarterPacMan(),new MyGhosts(),visual,bRunUnitTests);
 		
 		// for playing pacman with keyboard
 		//exec.runGameTimed(new HumanController(new KeyBoardInput()),new Legacy2TheReckoning(),visual,bRunUnitTests);

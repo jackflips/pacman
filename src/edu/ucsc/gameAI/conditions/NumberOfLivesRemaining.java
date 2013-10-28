@@ -5,7 +5,7 @@ import pacman.game.Game;
 
 public class NumberOfLivesRemaining implements ICondition {
 	
-	int min, int max;
+	int min, max;
 	public NumberOfLivesRemaining(int _min, int _max)
 	{
 		min = _min;
@@ -14,6 +14,6 @@ public class NumberOfLivesRemaining implements ICondition {
 	
 	public boolean test(Game game) 
 	{
-		return (game.getPacmanNumberOfLivesRemaining() > min && game.getPacmanNumberOfLivesRemaining() < max);
+		return (game.getPacmanNumberOfLivesRemaining() >= min && game.getPacmanNumberOfLivesRemaining() <= max);
 	}
 }

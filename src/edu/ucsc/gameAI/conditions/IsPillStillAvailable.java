@@ -13,6 +13,6 @@ public class IsPillStillAvailable implements ICondition {
 	
 	public boolean test(Game game) 
 	{
-		return game.isPillStillAvailable() == pillIndex;
+		return game.isPillStillAvailable(pillIndex);
 	}
 }
