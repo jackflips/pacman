@@ -16,9 +16,9 @@ public class PacmanInRegion implements ICondition {
 	public boolean test(Game game) {
 		int[] indices = game.getPacmanCurrentNodeIndex();
 		for (int i=0; i<indices.length; i++) {
-			yCoord = game.getNodeYCood(indices[i]);
+			int yCoord = game.getNodeYCood(indices[i]);
 			if (yCoord >= y1 && yCoord <= y2) {
-				xCoord = game.getNodeXCood(indices[i]);
+				int xCoord = game.getNodeXCood(indices[i]);
 				if (xCoord >= x1 && xCoord <= x2) {
 					return true;
 				}
