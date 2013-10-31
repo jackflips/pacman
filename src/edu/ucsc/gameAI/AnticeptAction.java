@@ -35,6 +35,6 @@ public class AnticeptAction implements IAction, IBinaryNode {
 	{
 		ArrayList<PathValue> results = anticeptor.anticept(game, game.getPacmanCurrentNodeIndex(), MOVE.NEUTRAL, numberOfMoves);
 		PathValue first = results.get(0);
-		return game.getNextMoveTowardsTarget(game.getPacmanCurrentNodeIndex(), first.node, DM.PATH);
+		return first.move;
 	}
 }
