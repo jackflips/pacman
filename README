@@ -14,8 +14,3 @@ GetToEmptyFlankAction
 Attempts to get to one of Pacman's anticept destinations that is far away from other ghosts
 not really sure how to implement
 the most important part is avoiding other ghosts though
-
-GhostAnticeptAction
-Attempts to move towards one of Pacman's anticept destinations while moving closer to Pacman
-not entirely sure how to implement this either
-but have a vague idea
