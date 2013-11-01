@@ -15,10 +15,12 @@ public class GhostAnticeptAction implements IAction, IBinaryNode {
 
 	Game game;
 	Anticeptor anticeptor;
+	GHOST ghost;
 
-	public GhostAnticeptAction(Game _game, GHOST ghost) {
+	public GhostAnticeptAction(Game _game, GHOST _ghost) {
 		game = _game;
 		anticeptor = new Anticeptor();
+		ghost = _ghost;
 	}
 
 	public void doAction() {
@@ -31,8 +33,24 @@ public class GhostAnticeptAction implements IAction, IBinaryNode {
 	
 	public MOVE getMove()
 	{
-		ArrayList<PathValue> results = anticeptor.anticept(game, game.getPacmanCurrentNodeIndex(), MOVE.NEUTRAL, numberOfMoves);
-		PathValue first = results.get(0);
-		return first.move;
+		int pacmanPos = game.getPacmanCurrentNodeIndex();
+		int ghostPos = game.getGhostCurrentNodeIndex(ghost);
+		int distanceUsed = game.getShortestPathDistance(pacmanPos, ghostPos) * 2 / 3;
+		ArrayList<PathValue> results = anticeptor.anticept(game, game.getPacmanCurrentNodeIndex(), MOVE.NEUTRAL, distanceUsed);
+		int destinationNode = -1;
+		for (PathValue result : results)
+		{
+			int dist = game.getShortestPathDistance(result.node, ghostPos);
+			if(dist < distanceUsed)
+			{
+				destinationNode = result.node;
+				break;
+			}
+		}
+		if(destinationNode = -1)
+		{
+			destinationNode = pacmanPos;
+		}
+		return game.getNextMoveTowardsTarget(ghostPos, destinationNode, game.getGhostLastMoveMade(ghost), DM.PATH);
 	}
 }
