@@ -4,6 +4,11 @@ import edu.ucsc.gameAI.ICondition;
 import pacman.game.Constants.GHOST;
 import pacman.game.Game;
 
+
+import pacman.game.Constants.MOVE;
+import pacman.game.Game;
+import pacman.game.Constants.*;
+
 public class GhostBetweenGhostAndPacman implements ICondition {
 	
 	GHOST ghost;

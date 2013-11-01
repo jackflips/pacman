@@ -47,7 +47,7 @@ public class GhostAnticeptAction implements IAction, IBinaryNode {
 				break;
 			}
 		}
-		if(destinationNode = -1)
+		if(destinationNode == -1)
 		{
 			destinationNode = pacmanPos;
 		}
