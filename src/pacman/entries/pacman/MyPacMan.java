@@ -44,8 +44,8 @@ public class MyPacMan extends Controller<MOVE> {
 	public void constructor(Game game) {
 		moveBinaryDecision = new BinaryDecision();
 		moveBinaryDecision.setCondition(new GhostsClose(50));
-		moveBinaryDecision.setTrueBranch(new PacmanAnticeptAction(game, 200));
-		moveBinaryDecision.setFalseBranch(new PacmanAnticeptAction(game, 100));
+		moveBinaryDecision.setTrueBranch(new PacmanAnticeptAction(game, 80));
+		moveBinaryDecision.setFalseBranch(new PacmanAnticeptAction(game, 75));
 	}
 	
 	public MOVE getMove(Game game,long timeDue) {	

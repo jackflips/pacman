@@ -88,9 +88,18 @@ public class Anticeptor
 		MOVE[] possibleMoves = game.getPossibleMoves(node, direction);
 		for( MOVE move : possibleMoves)
 		{
-			if (first)
+			if (first) {
 				firstMove = move;
+				if (move == game.getPacmanLastMoveMade()) {
+					weight += 5;
+				}
+			}
 			anticept_recurse(game, game.getNeighbour(node, move), move, exploreLength - 1, weight, false, firstMove);
+			if (first) {
+				if (move == game.getPacmanLastMoveMade()) {
+					weight -= 5;
+				}
+			}
 		}
 	}
 }
