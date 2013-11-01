@@ -14,10 +14,12 @@ public class Anticeptor
 	{
 		public MOVE move;
 		public int value;
-		public PathValue(MOVE _move, int _value)
+		public int node;
+		public PathValue(MOVE _move, int _value, int _node)
 		{
 			move = _move;
 			value = _value;
+			node = _node;
 		}
 	}
 	
@@ -78,7 +80,7 @@ public class Anticeptor
 		
 		if (exploreLength == 0)
 		{
-			PathValue value = new PathValue(firstMove, weight);
+			PathValue value = new PathValue(firstMove, weight, node);
 			values.add(value);
 			return;
 		}

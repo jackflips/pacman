@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 
 
-public class AnticeptAction implements IAction, IBinaryNode {
+public class PacmanAnticeptAction implements IAction, IBinaryNode {
 
 	Game game;
 	int numberOfMoves;
 	Anticeptor anticeptor;
 
-	public AnticeptAction(Game _game, int numMoves) {
+	public PacmanAnticeptAction(Game _game, int numMoves) {
 		game = _game;
 		numberOfMoves = numMoves;
 		anticeptor = new Anticeptor();

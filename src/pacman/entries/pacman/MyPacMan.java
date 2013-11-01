@@ -28,7 +28,7 @@ import edu.ucsc.gameAI.decisionTrees.binary.*;
 import edu.ucsc.gameAI.conditions.GhostsClose;
 import edu.ucsc.gameAI.GoLeftAction;
 import edu.ucsc.gameAI.GoRightAction;
-import edu.ucsc.gameAI.AnticeptAction;
+import edu.ucsc.gameAI.PacmanAnticeptAction;
 import edu.ucsc.gameAI.decisionTrees.binary.BinaryDecision;
 
 /*
@@ -43,9 +43,9 @@ public class MyPacMan extends Controller<MOVE> {
 
 	public void constructor(Game game) {
 		moveBinaryDecision = new BinaryDecision();
-		moveBinaryDecision.setCondition(new GhostsClose());
-		moveBinaryDecision.setTrueBranch(new AnticeptAction(game, 200));
-		moveBinaryDecision.setFalseBranch(new AnticeptAction(game, 100));
+		moveBinaryDecision.setCondition(new GhostsClose(50));
+		moveBinaryDecision.setTrueBranch(new PacmanAnticeptAction(game, 200));
+		moveBinaryDecision.setFalseBranch(new PacmanAnticeptAction(game, 100));
 	}
 	
 	public MOVE getMove(Game game,long timeDue) {	

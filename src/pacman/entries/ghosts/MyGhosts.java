@@ -26,29 +26,25 @@ import pacman.entries.Anticeptor;
 
 public class MyGhosts extends Controller<EnumMap<GHOST,MOVE>> {
 
-	public enum CommonGhostState {
+	/*public enum CommonGhostState {
 		ANTICEPT,	
 		SCATTER, 	
 		SWARM; 
-	};
+	};*/
 
 	Anticeptor anticeptor;
 
 	boolean initialized = false;
-	public CommonGhostState globalGhostState;
-	StateMachine[] stateMachines;
+	//public CommonGhostState globalGhostState;
+	private EnumMap<GHOST, GhostFSM> stateMachines;
 	
 	public void constructor(Game game) {
-		globalGhostState = CommonGhostState.SCATTER;
-		stateMachines = new StateMachine[4];
-		int i = 0;
-		for (StateMachine machine : stateMachines) {
-			machine = new StateMachine();
-			State interceptState = new State();
-			interceptState.setAction(new AttacmanAction(game, GHOST.values()[i]));
-			i++;
+		//globalGhostState = CommonGhostState.SCATTER;
+		
+		stateMachines = new EnumMap<GHOST, GhostFSM>(GHOST.class);
+		for (GHOST ghost : GHOST.values()) {
+			stateMachines.put(ghost, new GhostFSM(game, ghost));
 		}
-		anticeptor = new Anticeptor();
 	}
 
 	private EnumMap<GHOST, MOVE> myMoves=new EnumMap<GHOST, MOVE>(GHOST.class);
@@ -58,29 +54,15 @@ public class MyGhosts extends Controller<EnumMap<GHOST,MOVE>> {
 		if (!initialized) {
 			constructor(game);
 		}
-		myMoves.clear();
 		
-		//testing for anticept
-		ArrayList<Anticeptor.PathValue> values;
-		values = anticeptor.anticept(game, game.getPacmanCurrentNodeIndex(), MOVE.NEUTRAL, 10);
-		System.out.println("\nFRAME");
-		for(Anticeptor.PathValue value : values)
-		{
-			System.out.println("Node: " + value.node + "; Weight: " + value.value);
-		}
+		myMoves.clear();
 		
 		for(GHOST ghost : GHOST.values())	//for each ghost
 		{
-			BinaryDecision edibleBinaryDecision = new BinaryDecision();
-			edibleBinaryDecision.setCondition(new IsEdible(ghost));
-			edibleBinaryDecision.setTrueBranch(new GoLeftAction());
-			edibleBinaryDecision.setFalseBranch(new GoRightAction());
-	
 			if(game.doesGhostRequireAction(ghost)) { //if ghost requires an action:
-				myMoves.put(ghost,edibleBinaryDecision.makeDecision(game).getMove());
+				myMoves.put(ghost, stateMachines.get(ghost).getMove(game));
+				
 			}
-			
-			
 		}
 		
 		
