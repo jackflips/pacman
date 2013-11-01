@@ -8,7 +8,26 @@ import java.util.ArrayList;
 
 public class Anticeptor
 {
-	//public Anticeptor(int pillValue, int powerPillValue, int ghostValue, int edibleGhostValue)
+
+	int pillWeight, powerPillWeight, edibleGhostWeight, nonEdibleGhostWeight, pacmanWeight, sameDirectionBonusWeight;
+
+	public Anticeptor() {
+		pillWeight = 10;
+		powerPillWeight = 20;
+		edibleGhostWeight = 200;
+		nonEdibleGhostWeight = -10000;
+		pacmanWeight = 0;
+		sameDirectionBonusWeight = 5;
+	}
+
+	public Anticeptor(int _pillWeight, int _powerPillWeight, int _edibleGhostWeight, int _nonEdibleGhostWeight, int _pacmanWeight, int _sameDirectionBonusWeight) {
+		pillWeight = _pillWeight;
+		powerPillWeight = _powerPillWeight;
+		edibleGhostWeight = _edibleGhostWeight;
+		nonEdibleGhostWeight = _nonEdibleGhostWeight;
+		pacmanWeight = _pacmanWeight;
+		sameDirectionBonusWeight = _sameDirectionBonusWeight;
+	}
 
 	public class PathValue
 	{
@@ -49,10 +68,6 @@ public class Anticeptor
 		return values;
 	}
 	
-	private int pillWeight = 10;
-	private int powerPillWeight = 20;
-	private int edibleGhostWeight = 200;
-	private int nonEdibleGhostWeight = -10000;
 	private ArrayList<PathValue> values;
 	protected void anticept_recurse(Game game, int node, MOVE direction, int exploreLength, int weight, boolean first, MOVE firstMove)
 	{
