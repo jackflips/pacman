@@ -1,6 +1,7 @@
 package pacman.entries;
 
 import pacman.game.Constants.MOVE;
+import pacman.game.Constants.GHOST;
 import pacman.game.Game;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class Anticeptor
 	private int pillWeight = 10;
 	private int powerPillWeight = 20;
 	private int edibleGhostWeight = 200;
-	//private int nonedibleGhostWeight = -10000;
+	private int nonEdibleGhostWeight = -10000;
 	private ArrayList<PathValue> values;
 	protected void anticept_recurse(Game game, int node, MOVE direction, int exploreLength, int weight, boolean first, MOVE firstMove)
 	{
@@ -64,6 +65,15 @@ public class Anticeptor
 		{
 			if(game.isPowerPillStillAvailable(pillIndex))
 				weight += powerPillWeight;
+		}
+		for (GHOST ghost : GHOST.values()) {
+			if (game.getGhostCurrentNodeIndex(ghost) == node) {
+				if (game.isGhostEdible(ghost)) {
+					weight += edibleGhostWeight;
+				} else {
+					weight += nonEdibleGhostWeight;
+				}
+			}
 		}
 		
 		if (exploreLength == 0)

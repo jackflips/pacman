@@ -45,7 +45,7 @@ public class MyPacMan extends Controller<MOVE> {
 		moveBinaryDecision = new BinaryDecision();
 		moveBinaryDecision.setCondition(new GhostsClose());
 		moveBinaryDecision.setTrueBranch(new AnticeptAction(game, 200));
-		moveBinaryDecision.setFalseBranch(new AnticeptAction(game, 50));
+		moveBinaryDecision.setFalseBranch(new AnticeptAction(game, 100));
 	}
 	
 	public MOVE getMove(Game game,long timeDue) {	
