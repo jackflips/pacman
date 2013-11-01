@@ -1,1 +1,21 @@
 blah
+
+Things that need to be implemented for ghost AI:
+
+Condition: GhostBetweenGhostAndPacman
+Follows the shortest available path from the ghost's location to pacman's location
+Returns true iff there is another ghost on this path.
+
+Actions:
+RunAndScatterAction
+Flees Pacman and tries to avoid other ghosts as well.
+
+GetToEmptyFlankAction
+Attempts to get to one of Pacman's anticept destinations that is far away from other ghosts
+not really sure how to implement
+the most important part is avoiding other ghosts though
+
+GhostAnticeptAction
+Attempts to move towards one of Pacman's anticept destinations while moving closer to Pacman
+not entirely sure how to implement this either
+but have a vague idea
