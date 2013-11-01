@@ -31,6 +31,8 @@ import static pacman.game.Constants.*;
 import edu.ucsc.gameAI.*;
 import edu.ucsc.gameAI.conditions.*;
 import edu.ucsc.gameAI.conditions.GhostsClose;
+import edu.ucsc.gameAI.AnticeptAction;
+import pacman.entries.Anticeptor;
 import pacman.Evaluator;
 
 /**
