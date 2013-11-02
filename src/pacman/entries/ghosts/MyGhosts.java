@@ -59,7 +59,8 @@ public class MyGhosts extends Controller<EnumMap<GHOST,MOVE>> {
 		
 		for(GHOST ghost : GHOST.values())	//for each ghost
 		{
-			if(game.doesGhostRequireAction(ghost)) { //if ghost requires an action:
+			if(game.doesGhostRequireAction(ghost))
+			{ //if ghost requires an action:
 				myMoves.put(ghost, stateMachines.get(ghost).getMove(game));
 				
 			}

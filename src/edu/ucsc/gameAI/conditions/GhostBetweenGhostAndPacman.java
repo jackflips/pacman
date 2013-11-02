@@ -24,6 +24,7 @@ public class GhostBetweenGhostAndPacman implements ICondition {
 	//but whatevs for now.
 	public boolean test(Game game) 
 	{
+		//System.out.println("In GhostBetweenGhost..");
 		int pacmanPos = game.getPacmanCurrentNodeIndex();
 		int current = game.getGhostCurrentNodeIndex(ghost);
 		MOVE lastMove = game.getGhostLastMoveMade(ghost);
@@ -37,7 +38,7 @@ public class GhostBetweenGhostAndPacman implements ICondition {
 			ghostPositions[i] = game.getGhostCurrentNodeIndex(testGhost);
 			i++;
 		}
-		
+		//System.out.println("Pacman at node" + pacmanPos);
 		while(current != pacmanPos)
 		{
 			MOVE[] moves = game.getPossibleMoves(current, lastMove);
@@ -46,12 +47,23 @@ public class GhostBetweenGhostAndPacman implements ICondition {
 			else
 				lastMove = moves[0];
 			current = game.getNeighbour(current, lastMove);
+			//System.out.println("At node" + current);
 			for(int ghostPos : ghostPositions)
 			{
 				if(ghostPos == current)
+				{
+					//System.out.println("GhostBetweenGhost.. returning true");
 					return true;
+				}
+			}
+			i++;
+			if(i > 1000)
+			{
+				//System.out.println("GhostBetweenGhost giving up, returning false.");
+				return false;
 			}
 		}
+		//System.out.println("GhostBetweenGhost.. returning false");
 		return false; 
 	}
 }

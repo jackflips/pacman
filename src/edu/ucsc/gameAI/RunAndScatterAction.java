@@ -15,7 +15,6 @@ public class RunAndScatterAction implements IAction, IBinaryNode {
 
 	Game game;
 	int numberOfMoves;
-	int distanceFromOtherGhosts;
 	Anticeptor anticeptor;
 	GHOST myGhost;
 
@@ -23,7 +22,7 @@ public class RunAndScatterAction implements IAction, IBinaryNode {
 		game = _game;
 		numberOfMoves = numMoves;
 		myGhost = _ghost;
-		anticeptor = new Anticeptor(0, 0, 10, -5, -100, 0);
+		anticeptor = new Anticeptor(-1, -100, -90, 1000, -100000, 0);
 	}
 
 	public void doAction() {

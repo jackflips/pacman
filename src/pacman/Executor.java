@@ -47,7 +47,7 @@ public class Executor
 	boolean runFSMTests = true;
 	boolean runHFSMTests = false;
 	
-	final private int TEST_DURATION = 600; 
+	final private int TEST_DURATION = 5000; 
 	
 	/**
 	 * The main method. Several options are listed - simply remove comments to use the option you want.
@@ -60,8 +60,8 @@ public class Executor
 
 		
 		//run multiple games in batch mode - good for testing.
-		int numTrials=10000;
-		//exec.runExperiment(new StarterPacMan(),new Legacy2TheReckoning(),numTrials);
+		int numTrials=100;
+		//exec.runExperiment(new StarterPacMan(),new MyGhosts(),numTrials);
 		 
 		
 		/*

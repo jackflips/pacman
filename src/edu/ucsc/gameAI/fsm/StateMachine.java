@@ -25,14 +25,18 @@ public class StateMachine implements IStateMachine {
 		Collection<ITransition> transitions = currentState.getTransitions();
 		for (ITransition transition : transitions) {
 			if (transition.isTriggered(game)) {
-				actions.add(currentState.getExitAction());
-				actions.add(transition.getAction());
+				if(currentState.getExitAction() != null)
+					actions.add(currentState.getExitAction());
+				if(transition.getAction() != null)
+					actions.add(transition.getAction());
 				currentState = transition.getTargetState();
-				actions.add(currentState.getEntryAction());
+				if(currentState.getEntryAction() != null)
+					actions.add(currentState.getEntryAction());
 				break;
 			}
 		}
-		actions.add(currentState.getAction());
+		if(currentState.getAction() != null)
+			actions.add(currentState.getAction());
 
 		return actions;
 	}
