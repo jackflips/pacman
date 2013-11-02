@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class Anticeptor
 {
 
-	int pillWeight, powerPillWeight, edibleGhostWeight, nonEdibleGhostWeight, pacmanWeight, sameDirectionBonusWeight;
+	int pillWeight, edibleGhostWeight, nonEdibleGhostWeight, pacmanWeight, sameDirectionBonusWeight;
+	double powerPillWeight;
 
 	public Anticeptor() {
 		pillWeight = 10;
@@ -40,6 +41,10 @@ public class Anticeptor
 			value = _value;
 			node = _node;
 		}
+	}
+
+	public void adjustPowerpillWeight(double _powerPillWeight) {
+		powerPillWeight = _powerPillWeight;
 	}
 	
 	public ArrayList<PathValue> anticept(Game game, int startingNode, MOVE startingDirection, int exploreLength)
